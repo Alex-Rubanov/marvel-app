@@ -2,6 +2,7 @@ import { Component } from 'react';
 import MarvelService from '../../services/MarvelService';
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
+import logo from '../../resources/img/marvel-logo.jpg';
 
 class RandomChar extends Component {
     constructor(props) {
@@ -10,32 +11,30 @@ class RandomChar extends Component {
     }
 
     state = {
-        name: null,
-        description: null,
-        thumbnail: null,
-        homepage: null,
-        wiki: null
+        char: {}
     }
 
     marvelService = new MarvelService();
+
+    onCharLoaded = (char) => {
+        this.setState({ char })
+    }
 
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
         this.marvelService
             .getCharacter(id)
-            .then(res => {
-                this.setState({
-                    name: res.data.results[0].name,
-                    description: res.data.results[0].description,
-                    thumbnail: res.data.results[0].thumbnail.path + '.' + res.data.results[0].thumbnail.extension,
-                    homepage: res.data.results[0].urls[0].url,
-                    wiki: res.data.results[0].urls[1].url
-                })
-            })
+            .then(this.onCharLoaded)
     }
 
     render() {
-        const { name, description, thumbnail, homepage, wiki } = this.state;
+        const { char: { name, homepage, wiki } } = this.state;
+        let { char: { description, thumbnail } } = this.state;
+
+        description = description ? description : 'Information about this character was not found';
+
+        thumbnail = (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') ? logo : thumbnail;
+
         return (
             <div className="randomchar">
                 <div className="randomchar__block">
@@ -74,3 +73,6 @@ class RandomChar extends Component {
 }
 
 export default RandomChar;
+
+
+console.log('James Saunders, a disgruntled chemist tired of his job with the Hudson Pharmaceutical Company of West Caldwell, New Jersey, was contacted by the Grandmaster and offered superhuman powers in exchange for joining a tea.'.length)
