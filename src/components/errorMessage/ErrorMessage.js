@@ -1,11 +1,18 @@
-import error from './error.gif';
+import error from './error_v2.gif';
+import './errorMessage.scss';
 
 const ErrorMessage = () => {
     return (
-        <img 
+        <div className='error-message'>
+            <img 
             src={error} 
-            alt="error-img" 
-            style={{ display: 'block', margin: '0 auto', width: '250px', height: '250px', objectFit: 'contain' }}/>
+            alt="error-img"/>
+            <p> Ooops Error! Something went wrong. 
+                <br/>
+                <br/>
+                Please refresh the page.
+            </p>
+        </div>
     )
 }
 
