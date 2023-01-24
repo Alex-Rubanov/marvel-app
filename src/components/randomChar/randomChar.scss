@@ -2,17 +2,19 @@
 
 .randomchar {
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(2, 50%);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     &__block {
         padding: 40px 35px;
         display: grid;
         grid-template-columns: 180px auto;
+        grid-template-rows: 200px auto;
         column-gap: 30px;
     }
     &__img {
-        width: 180px;
-        height: 180px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
     &__info {

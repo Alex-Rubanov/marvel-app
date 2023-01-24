@@ -1,5 +1,8 @@
 import { Component } from 'react';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
+
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 import logo from '../../resources/img/marvel-logo.jpg';
@@ -11,13 +14,25 @@ class RandomChar extends Component {
     }
 
     state = {
-        char: {}
+        char: {},
+        loading: true,
+        error: false
     }
 
     marvelService = new MarvelService();
 
     onCharLoaded = (char) => {
-        this.setState({ char })
+        this.setState({ 
+            char,
+            loading: false 
+        })
+    }
+
+    onError = () => {
+        this.setState({
+            loading: false,
+            error: true
+        })
     }
 
     updateChar = () => {
@@ -25,35 +40,20 @@ class RandomChar extends Component {
         this.marvelService
             .getCharacter(id)
             .then(this.onCharLoaded)
+            .catch(this.onError)
     }
 
     render() {
-        const { char: { name, homepage, wiki } } = this.state;
-        let { char: { description, thumbnail } } = this.state;
-
-        description = description ? description : 'Information about this character was not found';
-
-        thumbnail = (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') ? logo : thumbnail;
+        const { char, loading, error } = this.state;
+        const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const content = !(error || loading) ? <View char={char}/> : null;
 
         return (
             <div className="randomchar">
-                <div className="randomchar__block">
-                    <img src={thumbnail} alt="Random character" className="randomchar__img"/>
-                    <div className="randomchar__info">
-                        <p className="randomchar__name">{name}</p>
-                        <p className="randomchar__descr">
-                            {description}
-                        </p>
-                        <div className="randomchar__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">Homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                {errorMessage}
+                {spinner}
+                {content}
                 <div className="randomchar__static">
                     <p className="randomchar__title">
                         Random character for today!<br/>
@@ -72,7 +72,34 @@ class RandomChar extends Component {
     }
 }
 
+const View = ({char}) => {
+    let { name, description, thumbnail, homepage, wiki } = char;
+
+    description = description ? description : 'Information about this character was not found';
+
+    thumbnail = (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') ? logo : thumbnail;
+
+    return (
+        <div className="randomchar__block">
+            <img src={thumbnail} alt="Random character" className="randomchar__img"/>
+            <div className="randomchar__info">
+                <p className="randomchar__name">{name}</p>
+                <p className="randomchar__descr">
+                    {description}
+                </p>
+                <div className="randomchar__btns">
+                    <a href={homepage} className="button button__main">
+                        <div className="inner">Homepage</div>
+                    </a>
+                    <a href={wiki} className="button button__secondary">
+                        <div className="inner">Wiki</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default RandomChar;
 
 
-console.log('James Saunders, a disgruntled chemist tired of his job with the Hudson Pharmaceutical Company of West Caldwell, New Jersey, was contacted by the Grandmaster and offered superhuman powers in exchange for joining a tea.'.length)
