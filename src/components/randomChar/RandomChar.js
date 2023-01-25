@@ -10,7 +10,7 @@ import logo from '../../resources/img/marvel-logo.jpg';
 class RandomChar extends Component {
     constructor(props) {
         super(props);
-        this.updateChar();
+        
     }
 
     state = {
@@ -20,6 +20,14 @@ class RandomChar extends Component {
     }
 
     marvelService = new MarvelService();
+
+    componentDidMount() {
+        this.id = setTimeout(this.updateChar(), 10);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.id);
+    }
 
     onCharLoaded = (char) => {
         this.setState({ 
@@ -62,7 +70,7 @@ class RandomChar extends Component {
                     <p className="randomchar__title">
                         Or choose another one
                     </p>
-                    <button className="button button__main">
+                    <button className="button button__main" onClick={this.updateChar}>
                         <div className="inner">try it</div>
                     </button>
                     <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
