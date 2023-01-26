@@ -49,6 +49,7 @@ input::-webkit-inner-spin-button {
 
 .app {
     width: 1100px;
+    min-height: 1615px;
     margin: 0 auto;
     padding: 50px 0 50px 0;
     position: relative;
@@ -62,7 +63,6 @@ input::-webkit-inner-spin-button {
 
 main {
     margin-top: 50px;
-    position: relative;
 }
 
 .pulse {
