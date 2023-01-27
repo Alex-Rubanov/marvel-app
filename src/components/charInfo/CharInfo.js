@@ -116,7 +116,7 @@ const View = ({ char }) => {
                         comics.slice(0, 10).map((item, i) => {
                             return (
                                 <li className="char__comics-item" key={i}>
-                                    <a href={item.resourceURI}>{item.name}</a>
+                                    {item.name}
                                 </li>
                             )
                         })  
