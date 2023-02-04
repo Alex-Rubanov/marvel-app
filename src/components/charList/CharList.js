@@ -125,8 +125,9 @@ class CharList extends Component {
 
         return (
             <div 
-                className="char__list">
-                onClick={(e) => this.addActiveClass(items, e)}
+                className="char__list"
+                >
+                
                     {errorMessage}
                     {spinner}
                     {content}
