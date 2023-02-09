@@ -63,7 +63,6 @@ const ComicsList = () => {
 
     return (
         <>
-            <img src={banner} alt="banner" className="comics__banner"/>
             <div className="comics__list">
             {errorMessage}
             {spinner}
