@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Page404 } from '../index'
 import useMarvelService from '../../../services/MarvelService';
 import Spinner from '../../spinner/Spinner';
-import ErrorMessage from '../../errorMessage/ErrorMessage';
 
 import './singleComicPage.scss';
 
@@ -26,7 +26,7 @@ const SingleComicPage = () => {
         setComic(comic);
     }
 
-    const errorMessage = error ? <ErrorMessage/> : null;
+    const errorMessage = error ? <Page404/> : null;
     const spinner = loading ? <Spinner/> : null;
     const content = !(error || loading || !comic) ? <View comic={comic}/> : null;
 
