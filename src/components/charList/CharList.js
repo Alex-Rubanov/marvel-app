@@ -10,10 +10,11 @@ import logo from '../../resources/img/marvel-logo.jpg';
 
 
 const CharList = (props) => {
+    const randomOffset =  Math.floor(Math.random() * (600 - 100) + 100);
 
     const [charList, setCharList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(210);
+    const [offset, setOffset] = useState(randomOffset);
     const [charEnded, setCharEnded] = useState(false);
 
     const { loading, error, getAllCharacters } = useMarvelService();

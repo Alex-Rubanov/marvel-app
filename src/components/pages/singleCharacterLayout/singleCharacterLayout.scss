@@ -6,9 +6,10 @@
     grid-template-columns: 293px 550px auto;
     column-gap: 50px;
     align-items: start;
-    &__img {
+    &__char-img {
         width: 293px;
-        height: 450px;
+        height: 293px;
+        object-fit: cover;
     }
     &__name {
         font-weight: bold;
@@ -20,18 +21,12 @@
         line-height: 24px;
         margin-top: 25px;
     }
-    &__price {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
-        color: $main-color;
-        margin-top: 25px;
-    }
     &__back {
         justify-self: end;
         font-weight: bold;
         font-size: 18px;
         line-height: 24px;
+        margin-bottom: 20px;
         &:hover {
             color: $main-color;
         }
