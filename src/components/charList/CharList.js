@@ -71,7 +71,7 @@ const CharList = (props) => {
                             }
                         }}>
                             <img src={thumbnail} alt={item.name} style={imgStyle}/>
-                            <div className="char__name">{item.name}</div>
+                            <div className="char__name">{item.name.length > 35 ? `${item.name.slice(0, 35)}... `: item.name}</div>
                     </li>
                 </CSSTransition>
             )
