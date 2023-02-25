@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
+
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
@@ -8,6 +8,20 @@ import Spinner from '../spinner/Spinner';
 import './charList.scss';
 import logo from '../../resources/img/marvel-logo.jpg';
 
+const setContent = (process, Component, newItemLoading) => {
+    switch(process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            return new Error('Unexpected state process');
+    }
+}
 
 const CharList = (props) => {
     const randomOffset =  Math.floor(Math.random() * (600 - 100) + 100);
@@ -17,7 +31,7 @@ const CharList = (props) => {
     const [offset, setOffset] = useState(randomOffset);
     const [charEnded, setCharEnded] = useState(false);
 
-    const { loading, error, getAllCharacters } = useMarvelService();
+    const { getAllCharacters, process, setProcess } = useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true);
@@ -26,7 +40,8 @@ const CharList = (props) => {
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllCharacters(offset)
-            .then(onCharListLoaded);
+            .then(onCharListLoaded)
+            .then(() => setProcess('confirmed'));
     }
     
     const onCharListLoaded = (newCharList) => {
@@ -55,7 +70,6 @@ const CharList = (props) => {
                 : item.thumbnail;
             
             return (
-                <CSSTransition key={item.id} timeout={500} classNames="char__item">
                     <li 
                         className="char__item"
                         tabIndex={0}
@@ -71,35 +85,28 @@ const CharList = (props) => {
                             }
                         }}>
                             <img src={thumbnail} alt={item.name} style={imgStyle}/>
-                            <div className="char__name">{item.name.length > 35 ? `${item.name.slice(0, 35)}... `: item.name}</div>
+                            <div className="char__name">{item.name.length > 25 ? `${item.name.slice(0, 25)}... `: item.name}</div>
                     </li>
-                </CSSTransition>
             )
         });
 
         return (
             <ul className="char__grid">
-                <TransitionGroup component={null}>
-                    {items}
-                </TransitionGroup>
+                {items}
             </ul>
         )
         
     }
-    
-    const items = renderItems(charList);
 
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemLoading ? <Spinner/> : null;
+    const elements = useMemo(() => {
+        return setContent(process, () => renderItems(charList), newItemLoading);
+    }, [process])
 
     return (
         <div 
             className="char__list"
             >
-            
-                {errorMessage}
-                {spinner}
-                {items}
+                {elements}
                 <button 
                     className="button button__main button__long"
                     disabled={newItemLoading}
