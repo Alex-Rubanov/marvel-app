@@ -1,72 +1,45 @@
-#Marvel-app v.1.0
+<h1 align="center">Marvel information portal</h1>
 
-# Getting Started with Create React App
+####  !IMPORTATNT! Unfortunately official Marvel API sometimes doen't provide more detailed information, links or thumbnails. 
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[MARVEL INFORMATION PORTAL WEB APPLICATION](#)         (Desktop version)
 
-## Available Scripts
+This project was created to provide information about Marvel characters and comics, offering you the opportunity to explore the fascinating world of Marvel. On this web application portal, you can discover information about random characters. Give it a try, and you will undoubtedly learn something new. Additionally, you can access a list of different characters, and by selecting one, you can find more detailed information about the specific comics where your favorite characters appear. Furthermore, you have the option to choose specific comics from the results list and visit dedicated pages for each, where you will find comprehensive details about them.
 
-In the project directory, you can run:
+The portal features pagination, allowing you to click on the "Load more" button to access additional characters or comics, depending on which page you are currently on. If you want to learn more about a specific Marvel character, you can use the search bar on the main page. If your search is successful, you will receive information about that along with a link that will redirect you to a new page with detailed information about the searched Marvel character.
 
-### `yarn start`
+<div align='right'>
+  <img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268669/hero_zgytmk.png" width="94%"/>
+</div>
+<img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268670/hero2_npejje.png" />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  Stack:
+---
 
-### `yarn test`
+- React
+- React Router Dom
+- React Helmet
+- Formik
+- Yup
+- SASS
+---
+- Marvel API
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div>
+  <img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268669/search1_ompirb.png" width='400'/>
+  <img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268670/search2_tpaohp.png" width='400'/>
+</div>
 
-### `yarn build`
+<img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268669/comics-info_upo5lm.png" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<div>
+  <img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268671/comics-list_vyf2oi.png" />
+  <img src="https://res.cloudinary.com/dnolckuaa/image/upload/v1689268670/comics-details_zgaxcj.png" />
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Marvel Entertainment, LLC, a wholly-owned subsidiary of The Walt Disney Company, is one of the world's most prominent character-based entertainment companies, built on a proven library of more than 8,000 characters featured in a variety of media over seventy-five years. Marvel utilizes its character franchises in entertainment, licensing and publishing. For more information visit marvel.com. **© 2023 MARVEL**.
