@@ -4,8 +4,6 @@ import env from 'react-dotenv';
 const useMarvelService = () => {
   const _baseOffset = 210;
 
-  console.log(env.API_KEY);
-
   const { request, clearError, process, setProcess } = useHttp();
 
   const getAllCharacters = async (offset = _baseOffset) => {
