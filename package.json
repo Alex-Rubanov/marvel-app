@@ -13,14 +13,13 @@
     "react-helmet": "^6.1.0",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.x.x",
     "web-vitals": "^1.0.1",
     "yup": "^1.0.0"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
-    "serve": "react-dotenv && serve build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
