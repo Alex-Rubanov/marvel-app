@@ -1,4 +1,5 @@
 import { useHttp } from '../hooks/http.hook';
+import env from 'react-dotenv';
 
 const useMarvelService = () => {
   const _baseOffset = 210;
