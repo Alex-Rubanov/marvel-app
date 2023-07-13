@@ -4,30 +4,24 @@ import env from 'react-dotenv';
 const useMarvelService = () => {
   const _baseOffset = 210;
 
-  console.log(env.REACT_APP_API_KEY);
+  console.log(env.API_KEY);
 
   const { request, clearError, process, setProcess } = useHttp();
 
   const getAllCharacters = async (offset = _baseOffset) => {
-    const res = await request(
-      `${env.REACT_APP_BASE_URL}/characters?limit=9&offset=${offset}&${env.REACT_APP_API_KEY}`,
-    );
+    const res = await request(`${env.BASE_URL}/characters?limit=9&offset=${offset}&${env.API_KEY}`);
 
     return res.data.results.map(_transformCharacter);
   };
 
   const getCharacter = async (id) => {
-    const res = await request(
-      `${env.REACT_APP_BASE_URL}/characters/${id}?&${env.REACT_APP_API_KEY}`,
-    );
+    const res = await request(`${env.BASE_URL}/characters/${id}?&${env.API_KEY}`);
 
     return _transformCharacter(res.data.results[0]);
   };
 
   const getCharacterByName = async (name) => {
-    const res = await request(
-      `${env.REACT_APP_BASE_URL}/characters?name=${name}&${env.REACT_APP_API_KEY}`,
-    );
+    const res = await request(`${env.BASE_URL}/characters?name=${name}&${env.API_KEY}`);
 
     return res.data.results.map(_transformCharacter);
   };
@@ -47,14 +41,14 @@ const useMarvelService = () => {
 
   const getAllComics = async (offset = 0) => {
     const res = await request(
-      `${env.REACT_APP_BASE_URL}/comics?orderBy=issueNumber&limit=8&offset=${offset}&${env.REACT_APP_API_KEY}`,
+      `${env.BASE_URL}/comics?orderBy=issueNumber&limit=8&offset=${offset}&${env.API_KEY}`,
     );
 
     return res.data.results.map(_transformComics);
   };
 
   const getComic = async (id) => {
-    const res = await request(`${env.REACT_APP_BASE_URL}/comics/${id}?${env.REACT_APP_API_KEY}`);
+    const res = await request(`${env.BASE_URL}/comics/${id}?${env.API_KEY}`);
     return _transformComics(res.data.results[0]);
   };
 
