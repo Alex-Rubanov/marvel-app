@@ -1,0 +1,19 @@
+.page404{
+    &__link-not-found {
+        display: block;
+        width: 600px;
+        height: 400px;
+        object-fit: contain;
+        margin: 100px auto 0;
+    }
+    &__link-go-back {
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        transition: .3s;
+    }
+    &__link-go-back:hover {
+        color: #9f0013;
+    }
+}
