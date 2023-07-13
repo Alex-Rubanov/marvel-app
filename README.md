@@ -3,7 +3,7 @@
 ####  !IMPORTATNT! Unfortunately official Marvel API sometimes doen't provide more detailed information, links or thumbnails. 
 ---
 
-[MARVEL INFORMATION PORTAL WEB APPLICATION](#)         (Desktop version)
+[MARVEL INFORMATION PORTAL WEB APPLICATION](https://marvel-app-gray.vercel.app/)         (Desktop version)
 
 This project was created to provide information about Marvel characters and comics, offering you the opportunity to explore the fascinating world of Marvel. On this web application portal, you can discover information about random characters. Give it a try, and you will undoubtedly learn something new. Additionally, you can access a list of different characters, and by selecting one, you can find more detailed information about the specific comics where your favorite characters appear. Furthermore, you have the option to choose specific comics from the results list and visit dedicated pages for each, where you will find comprehensive details about them.
 
